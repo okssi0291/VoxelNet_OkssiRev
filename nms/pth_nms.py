@@ -1,5 +1,5 @@
 import torch
-from ._ext import nms
+# from ._ext import nms
 import numpy as np
 
 def pth_nms(dets, thresh):
@@ -19,7 +19,8 @@ def pth_nms(dets, thresh):
 
     keep = torch.LongTensor(dets.size(0))
     num_out = torch.LongTensor(1)
-    nms.cpu_nms(keep, num_out, dets, order, areas, thresh)
+    # nms.cpu_nms(keep, num_out, dets, order, areas, thresh)
+    assert(0) # okssi modified.
 
     return keep[:num_out[0]]
   else:
@@ -39,7 +40,8 @@ def pth_nms(dets, thresh):
     num_out = torch.LongTensor(1)
     # keep = torch.cuda.LongTensor(dets.size(0))
     # num_out = torch.cuda.LongTensor(1)
-    nms.gpu_nms(keep, num_out, dets, thresh)
+    # nms.gpu_nms(keep, num_out, dets, thresh)
+    assert(0) #okssi modified.
 
     return order[keep[:num_out[0]].cuda()].contiguous()
     # return order[keep[:num_out[0]]].contiguous()

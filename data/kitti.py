@@ -20,7 +20,7 @@ class KittiDataset(data.Dataset):
         self.calib_path = os.path.join(self.data_path, "calib/")
         self.label_path = os.path.join(self.data_path, "label_2/")
 
-        with open(os.path.join(self.data_path, '%s.txt' % set)) as f:
+        with open(os.path.join(self.data_path, '../ImageSets/%s.txt' % set)) as f:
             self.file_list = f.read().splitlines()
 
         self.T = cfg.T

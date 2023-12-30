@@ -55,7 +55,7 @@ torch.backends.cudnn.enabled=True
 
 # dataset
 dataset=KittiDataset(cfg=cfg,root='./data/KITTI',set='train')
-data_loader = data.DataLoader(dataset, batch_size=cfg.N, num_workers=4, collate_fn=detection_collate, shuffle=True, \
+data_loader = data.DataLoader(dataset, batch_size=cfg.N, num_workers=1, collate_fn=detection_collate, shuffle=True, \
                               pin_memory=False)
 
 # network
@@ -112,13 +112,13 @@ def train():
             t1 = time.time()
 
 
-            print('Timer: %.4f sec.' % (t1 - t0))
-            print('iter ' + repr(iteration) + ' || Loss: %.4f || Conf Loss: %.4f || Loc Loss: %.4f' % \
-                  (loss.data[0], conf_loss.data[0], reg_loss.data[0]))
+            # print('Timer: %.4f sec.' % (t1 - t0))
+            # print('iter ' + repr(iteration) + ' || Loss: %.4f || Conf Loss: %.4f || Loc Loss: %.4f' % \
+            #       (loss.data[0], conf_loss.data[0], reg_loss.data[0]))
 
-            # visualization
-            #draw_boxes(rm, psm, ids, images, calibs, 'pred')
-            draw_boxes(targets.data, pos_equal_one.data, images, calibs, ids,'true')
+            # # visualization
+            # #draw_boxes(rm, psm, ids, images, calibs, 'pred')
+            # draw_boxes(targets.data, pos_equal_one.data, images, calibs, ids,'true')
 
 
 

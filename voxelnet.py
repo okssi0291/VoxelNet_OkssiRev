@@ -160,7 +160,7 @@ class VoxelNet(nn.Module):
 
         dense_feature = Variable(torch.zeros(dim, cfg.N, cfg.D, cfg.H, cfg.W).cuda())
 
-        dense_feature[:, coords[:,0], coords[:,1], coords[:,2], coords[:,3]]= sparse_features
+        dense_feature[:, coords[:,0], coords[:,1], coords[:,2], coords[:,3]]= sparse_features.t()
 
         return dense_feature.transpose(0, 1)
 
